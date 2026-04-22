@@ -1,6 +1,6 @@
 # Maintainer: swweetp <swweetp@outlook.com>
 pkgname=turing-smart-screen-python
-pkgver=3.9.6
+pkgver=3.9.7
 pkgrel=1
 epoch=
 pkgdesc="A Python system monitor program and an abstraction library for small IPS USB-C (UART) displays (Unofficial open-source alternative version)"
@@ -47,14 +47,24 @@ source=(
 	"sysusers.conf"
 	"tmpfiles.conf"
 	"udev.rules"
+	"python3.14-support.patch"
+	"subprocess-venv-python.patch"
 )
 noextract=()
-sha256sums=('641af1f15ac21d67120c2354ece7f0433104002871f93428a0f8d3f383d04496'
+sha256sums=('88c0780e09dad6e1ec38914f780ad49f3da1679795de3434e97276c1844fe5ba'
             'e82a96a7a1fce673af864b9295df6c9c0c2c2ec07ea0ce8eb74910d232b33f6a'
             'e648b026686611231538e1e67d32c1d9879da47d427f0d34c13e870b154506cf'
             'fa172b5ab1fbcaaf8b6f21e9080d12e27333a99863680fd768789ba7bafb1ae2'
-            '3d3749981af15fcdacda784a159c4970ca8c6316dedd2eab477939ac97071f2c')
+            '3d3749981af15fcdacda784a159c4970ca8c6316dedd2eab477939ac97071f2c'
+            'SKIP'
+            'SKIP')
 validpgpkeys=()
+
+prepare() {
+	cd "$srcdir/turing-smart-screen-python-$pkgver"
+	patch -p1 < "$srcdir/python3.14-support.patch"
+	patch -p1 < "$srcdir/subprocess-venv-python.patch"
+}
 
 package() {
 	install -Dm755 "${pkgname%-python}" -t "$pkgdir/usr/bin/"
