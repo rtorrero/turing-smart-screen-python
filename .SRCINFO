@@ -6,6 +6,7 @@ pkgbase = turing-smart-screen-python
 	install = turing-smart-screen-python.install
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = python-virtualenv
 	depends = python
 	depends = python-pyserial
 	depends = python-yaml

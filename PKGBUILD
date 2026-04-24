@@ -27,7 +27,9 @@ depends=(
 	bash
 	tk
 )
-makedepends=()
+makedepends=(
+	python-virtualenv
+)
 checkdepends=()
 optdepends=(
 	'python-pyamdgpuinfo: Support for AMD GPUs'
@@ -80,4 +82,25 @@ package() {
 	cp -a . "$pkgdir/opt/$pkgname/"
 
 	chmod 664 "$pkgdir/opt/$pkgname/config.yaml"
+
+	# Create venv and install Python dependencies
+	cd "$pkgdir/opt/$pkgname"
+	python -m venv --system-site-packages venv
+	
+	# Install pip dependencies (excluding pyinstaller which is only for building)
+	"$pkgdir/opt/$pkgname/venv/bin/pip" install --no-cache-dir \
+		pyserial~=3.5 \
+		PyYAML~=6.0.3 \
+		psutil~=7.2.1 \
+		pystray~=0.19.5 \
+		babel~=2.17.0 \
+		ruamel.yaml~=0.19.1 \
+		sv-ttk~=2.6.1 \
+		tkinter-tooltip~=3.1.2 \
+		uptime~=3.0.1 \
+		requests~=2.32.5 \
+		ping3~=5.1.5 \
+		"pillow~=12.1.0" \
+		"numpy~=2.4.1" \
+		"GPUtil @ git+https://github.com/mathoudebine/gputil.git@1.4.1-py3.13"
 }
