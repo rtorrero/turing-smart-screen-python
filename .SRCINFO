@@ -33,11 +33,13 @@ pkgbase = turing-smart-screen-python
 	source = udev.rules
 	source = python3.14-support.patch
 	source = subprocess-venv-python.patch
+	source = theme-editor-relative-paths.patch
 	sha256sums = 88c0780e09dad6e1ec38914f780ad49f3da1679795de3434e97276c1844fe5ba
 	sha256sums = cb274a8de9b87f4af204cba32367d5b8f713e283785ab88025a301bcac196fb5
 	sha256sums = e648b026686611231538e1e67d32c1d9879da47d427f0d34c13e870b154506cf
 	sha256sums = fa172b5ab1fbcaaf8b6f21e9080d12e27333a99863680fd768789ba7bafb1ae2
 	sha256sums = 3d3749981af15fcdacda784a159c4970ca8c6316dedd2eab477939ac97071f2c
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

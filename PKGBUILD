@@ -51,6 +51,7 @@ source=(
 	"udev.rules"
 	"python3.14-support.patch"
 	"subprocess-venv-python.patch"
+	"theme-editor-relative-paths.patch"
 )
 noextract=()
 sha256sums=('88c0780e09dad6e1ec38914f780ad49f3da1679795de3434e97276c1844fe5ba'
@@ -59,6 +60,7 @@ sha256sums=('88c0780e09dad6e1ec38914f780ad49f3da1679795de3434e97276c1844fe5ba'
             'fa172b5ab1fbcaaf8b6f21e9080d12e27333a99863680fd768789ba7bafb1ae2'
             '3d3749981af15fcdacda784a159c4970ca8c6316dedd2eab477939ac97071f2c'
             'SKIP'
+            'SKIP'
             'SKIP')
 validpgpkeys=()
 
@@ -66,6 +68,7 @@ prepare() {
 	cd "$srcdir/turing-smart-screen-python-$pkgver"
 	patch -p1 < "$srcdir/python3.14-support.patch"
 	patch -p1 < "$srcdir/subprocess-venv-python.patch"
+	patch -p1 < "$srcdir/theme-editor-relative-paths.patch"
 }
 
 package() {
